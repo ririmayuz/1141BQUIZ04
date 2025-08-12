@@ -36,7 +36,17 @@
                                 }
                                 ?>
                                 |
-                                <a href="?do=admin">管理登入</a>
+                                <?php
+                                if(isset($_SESSION['admin'])){
+                                        echo "<a href='back.php'>";
+                                        echo "返回管理";
+                                        echo "</a> ";
+                                }else{
+                                        echo "<a href='?do=admin'>";
+                                        echo "管理登入";
+                                        echo "</a> ";
+                                }
+                                ?>
                         </div>
                         <!-- 跑馬燈 -->
                         <marquee behavior="" direction="">
