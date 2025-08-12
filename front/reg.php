@@ -78,7 +78,7 @@
 
     // 清空欄位
     function clean() {
-        console.log("HI");
+        // console.log("HI");
         $("#name").val('');
         $("#acc").val('');
         $("#pw").val('');
