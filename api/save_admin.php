@@ -1,6 +1,8 @@
-<?php include_once "db.php"; 
+<?php include_once "db.php";
 
 $_POST['pr']=serialize($_POST['pr']);
+
 $Admin->save($_POST);
 
 to("../back.php");
+
