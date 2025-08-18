@@ -3,19 +3,18 @@ $table=$_GET['table'];
 unset($_GET['table']);
 
 $chk=$$table->count($_GET);
-//兩個$$
 
 if($chk){
     echo 1;
     switch($table){
         case 'User':
-        $_SESSION['login']=$_GET['acc'];
-        break;
-        
+            $_SESSION['login']=$_GET['acc'];
+            break;
         case 'Admin':
-        $_SESSION['admin']=$_GET['acc'];
-        break;
+            $_SESSION['admin']=$_GET['acc'];
+            break;
     }
+    
 }else{
     echo 0;
 }
