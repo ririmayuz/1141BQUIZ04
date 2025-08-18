@@ -16,7 +16,6 @@
         <td class="tt ct">密碼</td>
         <td class="pp"><input type="password" name="pw" id="pw"></td>
     </tr>
-
     <tr>
         <td class="tt ct">電話</td>
         <td class="pp"><input type="text" name="tel" id="tel"></td>
@@ -30,60 +29,55 @@
         <td class="pp"><input type="text" name="email" id="email"></td>
     </tr>
 </table>
-
 <div class="ct">
     <button onclick="reg()">註冊</button>
     <button onclick="clean()">重置</button>
 </div>
-
 <script>
-    // 註冊帳號條件判斷
-    function chkAcc() {
-        let acc = $('#acc').val();
-        $.get("./api/chkAcc.php", {
-            acc
-        }, (res) => {
-            if (parseInt(res) > 0 || acc == 'admin') {
-                alert("帳號已存在");
-            } else {
-                alert("帳號可用");
-            }
-        })
-    }
+function chkAcc(){
+    let acc=$("#acc").val();
+    $.get("./api/chkAcc.php",{acc},(res)=>{
+        if(parseInt(res)>0 || acc=='admin'){
+            alert("帳號已存在");
+        }else{
+            alert("帳號可用");
+        }
+    })
+}
 
-    function reg() {
 
-        let user={
-            name:$("#name").val(),
-            acc:$("#acc").val(),
-            pw:$("#pw").val(),
-            tel:$("#tel").val(),
-            addr:$("#addr").val(),
-            email:$("#email").val()
-        };
+function reg(){
+    let user={
+        name:$("#name").val(),
+        acc:$("#acc").val(),
+        pw:$("#pw").val(),
+        tel:$("#tel").val(),
+        addr:$("#addr").val(),
+        email:$("#email").val()
+    };
 
-        $.get("./api/chkAcc.php", {
-            acc: user.acc
-        }, (res) => {
-            if (parseInt(res) > 0 || acc == 'admin') {
-                alert("帳號已存在");
-            } else {
-                $.post("./api/reg.php", user, () => {
-                    alert("註冊成功");
-                    location.href = "?do=login";
-                })
-            }
-        })
-    }
 
-    // 清空欄位
-    function clean() {
-        // console.log("HI");
-        $("#name").val('');
-        $("#acc").val('');
-        $("#pw").val('');
-        $("#tel").val('');
-        $("#addr").val('');
-        $("#email").val('');
-    }
+    $.get("./api/chkAcc.php",{acc:user.acc},(res)=>{
+        if(parseInt(res)>0 || acc=='admin'){
+            alert("帳號已存在");
+        }else{
+            $.post("./api/reg.php",user,()=>{
+                alert("註冊成功");
+                location.href="?do=login";
+            })
+        }
+    })
+
+}
+
+function clean(){
+    console.log("HI")
+    $("#name").val('');
+    $("#acc").val('');
+    $("#pw").val('');
+    $("#tel").val('');
+    $("#addr").val('');
+    $("#email").val('');
+}
+
 </script>

@@ -4,9 +4,10 @@
 </a>
 <h2>會員登入</h2>
 
-<table class="all">
+<!-- table.all>tr*3>td.tt.ct+td.pp>input:text -->
+ <table class="all">
     <tr>
-        <td class="tt ct">帳號</td>
+        <td class="tt ct">帳號 </td>
         <td class="pp"><input type="text" name="acc" id="acc"></td>
     </tr>
     <tr>
@@ -19,37 +20,36 @@
             <?php
             $a=rand(1,9);
             $b=rand(1,9);
-
             $_SESSION['ans']=$a+$b;
-            echo $a ." + ". $b . " = ";
+            echo $a . " + ". $b . " = ";
 
             ?>
             <input type="text" name="chk" id="chk">
         </td>
     </tr>
-</table>
-
+ </table>
 <div class="ct">
     <button onclick="login()">確認</button>
 </div>
 
 <script>
-    function login(){
-        let chk=$("#chk").val();
-        $.get("./api/chkAns.php",{chk},(res)=>{
-            if(parseInt(res)==1){
-                $.get("./api/chkPw.php",{acc:$("#acc").val(),pw:$("#pw").val(),table:"User"},(res)=>{
-                    if(parseInt(res)){
+function login(){
+    let chk=$("#chk").val();
+    $.get("./api/chkAns.php",{chk},(res)=>{
+        if(parseInt(res)==1){
+            $.get("./api/chkPw.php",{acc:$("#acc").val(),pw:$("#pw").val(),table:"User"},(res)=>{
+                if(parseInt(res)){
 
-                        location.href="?"
-                    }else{
-                        alert("帳號或密碼錯誤");
-                    }
-                })
-            }else{
-                alert("對不起，你輸入的驗證碼有誤，請重新輸入");
-            }
-        })
-      
-    }
+                    location.href="?"
+                }else{
+                    alert("帳號或密碼錯誤")
+                }
+            })
+
+
+        }else{
+            alert("對不起，你輸入的驗證碼有誤，請重新登入");
+        }
+    })
+}    
 </script>
