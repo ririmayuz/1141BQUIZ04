@@ -22,7 +22,7 @@
     <tr class="tt">
         <td><?=$big['name'];?></td>
         <td class="ct">
-            <button class="edit-btn" data-id="<?=$big['id'];?>">修改</button>
+            <button class="typr-edit-btn" data-id="<?=$big['id'];?>">修改</button>
             <button class='del-btn' data-id="<?=$big['id'];?>">刪除</button>
         </td>
     </tr>
@@ -34,7 +34,7 @@
     <tr class="pp ct">
         <td><?=$mid['name'];?></td>
         <td>
-            <button class="edit-btn" data-id="<?=$mid['id'];?>">修改</button>
+            <button class="type-edit-btn" data-id="<?=$mid['id'];?>">修改</button>
             <button class="del-btn" data-id="<?=$mid['id'];?>">刪除</button>
         </td>
     </tr>
@@ -160,7 +160,7 @@ $(".up-btn,.down-btn").on("click",function(){
     })
 })
 
-$(".edit-btn").on("click",function(){
+$(".type-edit-btn").on("click",function(){
     let id=$(this).data("id");
     location.href=`?do=edit_item&id=${id}`;
 })
