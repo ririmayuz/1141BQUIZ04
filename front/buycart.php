@@ -51,7 +51,7 @@ if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
     <a href="index.php">
         <img src="./icon/0411.jpg" alt="">
     </a>
-    <a href="">
+    <a href="?do=checkout">
         <img src="./icon/0412.jpg" alt="">
     </a>
 </div> 
