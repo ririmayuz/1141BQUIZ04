@@ -63,6 +63,19 @@ $user = $User->find(['acc' => $_SESSION['login']]);
 
 <script>
 
+    //方法三：使用FormData物件來取得表單的內容並以ajax送出
+    $("#orderForm").on("submit", function(e) {
+        e.preventDefault();
+        let form = new FormData(document.getElementById("orderForm"));
+        let data = Object.fromEntries(form.entries())
+        $.post('./api/save_order.php', data, () => {
+            alert("訂購成功\n感謝你的選購")
+            location.href = '?'
+        })
+
+    })
+
+    //🪄方法一跟方法二並沒有檢查訂單是否送出成功到資料庫
     //方法二：preventDefault送出前提示
     // $("#orderForm").on("submit", function(e) {
     //     e.preventDefault();
@@ -70,8 +83,9 @@ $user = $User->find(['acc' => $_SESSION['login']]);
     //     $("#orderForm").submit();
     // })
 
-    function submitForm() {
-        alert("訂購成功\n感謝您的選購");
-        $("#orderform").submit();
-    }
+    //方法一：onclick送出前提示
+    // function submitForm() {
+    //     alert("訂購成功\n感謝您的選購");
+    //     $("#orderform").submit();
+    // }
 </script>
