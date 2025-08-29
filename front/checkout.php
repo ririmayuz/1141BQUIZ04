@@ -4,6 +4,7 @@ $user=$User->find(['acc'=>$_SESSION['login']]);
 ?>
 
 <h2 class="ct">填寫資料</h2>
+<form action="./api/save_order.php" method="post">
 <table class="all">
     <tr>
         <td class="tt ct">登入帳號</td>
@@ -52,3 +53,9 @@ $user=$User->find(['acc'=>$_SESSION['login']]);
     ?>
 </table>
 <div class="all tt ct">總價:<?=$sum;?></div>
+<input type="hidden" name="total" value="<?=$sum;?>">
+<div class="ct">
+    <input type="submit" value="確定送出">
+    <input type="button" value="返回修改訂單" onclick="location.href='?do=buycart'">
+</div>
+</form>
