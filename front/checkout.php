@@ -55,7 +55,14 @@ $user=$User->find(['acc'=>$_SESSION['login']]);
 <div class="all tt ct">總價:<?=$sum;?></div>
 <input type="hidden" name="total" value="<?=$sum;?>">
 <div class="ct">
-    <input type="submit" value="確定送出">
+    <input type="submit" value="確定送出" onclick="submitForm()">
     <input type="button" value="返回修改訂單" onclick="location.href='?do=buycart'">
 </div>
 </form>
+
+<script>
+function submitForm(){
+    alert("訂購成功\n感謝您的選購");
+    $("#orderform").submit();
+}
+</script>
